@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+
+    {% if data %}
+        <h2 class="center">
+            Showing search results for <strong>{{ search | title }}</strong>
+        </h2>
+
+        <div class="row">
+
+
+            {% for post in data %}
+                <div class="col s4">
+                    <div class="card">
+                        <div class="card-image">
+                            <a href="{{ post.post_url }}"><img src="{{ post.post_image_url }}" alt=""></a>
+                        </div>
+                        <div class="card-content">
+                            <p>{{ post.post_title }}</p>
+                        </div>
+                        <div class="card-action">
+                            <a href="/{{ post.post_url }}">View Listing</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+    {% else %}
+
+        <h2 class="center">
+            Sorry, no results found for the search <strong>{{ search | title }}</strong>
+        </h2>
+    {% endif %}
+
+{% endblock content %}
